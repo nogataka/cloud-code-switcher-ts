@@ -1,0 +1,36 @@
+{
+  "name": "cloud-code-switcher",
+  "version": "1.0.0",
+  "description": "Switch Claude Code providers via CLI and Web UI",
+  "main": "dist/cli.js",
+  "bin": {
+    "cc-switch": "bin/cc-switch.js"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "static/"
+  ],
+  "scripts": {
+    "build": "esbuild src/cli.ts --bundle --platform=node --format=cjs --outfile=dist/cli.js --external:open",
+    "dev": "node bin/cc-switch.js"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "provider",
+    "switcher"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/static": "^9.0.0",
+    "commander": "^14.0.3",
+    "fastify": "^5.7.4",
+    "open": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  }
+}

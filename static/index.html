@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Code Switcher</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="logo">Cloud Code Switcher</h1>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Notification banner -->
+      <div id="notification" class="notification" hidden></div>
+
+      <!-- Active status card -->
+      <section class="card status-card">
+        <div class="card-header">
+          <h2>Active Configuration</h2>
+          <span id="status-badge" class="badge">-</span>
+        </div>
+        <div class="status-grid">
+          <div class="status-item">
+            <span class="status-label">Provider</span>
+            <span id="current-provider" class="status-value">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Default Model</span>
+            <span id="current-default-tier" class="status-value">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Opus</span>
+            <span id="current-opus" class="status-value mono">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Sonnet</span>
+            <span id="current-sonnet" class="status-value mono">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Haiku</span>
+            <span id="current-haiku" class="status-value mono">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Base URL</span>
+            <span id="current-url" class="status-value mono">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Auth</span>
+            <span id="current-auth" class="status-value">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Updated</span>
+            <span id="current-updated" class="status-value">-</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="two-col">
+        <!-- Switch form -->
+        <section class="card">
+          <div class="card-header">
+            <h2>Provider Settings</h2>
+          </div>
+          <form id="switch-form" class="form">
+            <div class="form-group">
+              <label for="provider">Provider</label>
+              <select id="provider" required></select>
+            </div>
+
+            <div class="form-group">
+              <label for="default-tier">Default Model</label>
+              <select id="default-tier" required>
+                <option value="opus">Opus</option>
+                <option value="sonnet" selected>Sonnet</option>
+                <option value="haiku">Haiku</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="model-opus">Model (Opus)</label>
+                <input id="model-opus" type="text" placeholder="claude-opus-4-6" />
+              </div>
+              <div class="form-group">
+                <label for="model-sonnet">Model (Sonnet)</label>
+                <input id="model-sonnet" type="text" placeholder="claude-sonnet-4-5" />
+              </div>
+              <div class="form-group">
+                <label for="model-haiku">Model (Haiku)</label>
+                <input id="model-haiku" type="text" placeholder="claude-haiku-4-5" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="base-url">Base URL</label>
+              <input id="base-url" type="text" placeholder="https://api.example.com/..." />
+            </div>
+
+            <div class="form-group">
+              <label for="auth-token">Auth Token</label>
+              <input id="auth-token" type="password" placeholder="Change only when needed" />
+            </div>
+
+            <button type="submit" class="btn-primary">Save & Apply</button>
+          </form>
+        </section>
+
+        <!-- Running processes -->
+        <section class="card">
+          <div class="card-header">
+            <h2>Running Processes</h2>
+            <button id="refresh-processes" class="btn-icon" title="Refresh">&#x21bb;</button>
+          </div>
+          <div id="process-list" class="process-list">
+            <p class="empty-state">Loading...</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Env preview -->
+      <section class="card">
+        <details>
+          <summary class="card-header clickable">
+            <h2>Environment Variables</h2>
+          </summary>
+          <pre id="env-preview" class="env-pre">loading...</pre>
+        </details>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
