@@ -105,16 +105,60 @@ cc-switch run -- claude --model sonnet
 
 ## 開発
 
+### セットアップ
+
 ```bash
+# リポジトリをクローン
+git clone https://github.com/your-name/cloud-code-switcher.git
+cd cloud-code-switcher
+
 # 依存関係のインストール
 npm install
 
 # ビルド (esbuild)
 npm run build
-
-# 開発用に直接実行
-npm run dev
 ```
+
+### 開発時の実行方法
+
+グローバルインストールせずにローカルで動作確認するには `npm run dev` を使います。
+`cc-switch` コマンドの代わりに `npm run dev` の後にサブコマンドを指定してください。
+
+```bash
+# ヘルプを表示
+npm run dev
+
+# 現在の設定を表示
+npm run dev show
+
+# シェル環境変数をエクスポート
+npm run dev env
+
+# Web UI を起動
+npm run dev ui
+
+# プロバイダー環境でコマンドを実行
+npm run dev run
+npm run dev run -- echo hello
+```
+
+### プロジェクト構成
+
+```
+src/          TypeScript ソースコード
+bin/          エントリポイント (bin/cc-switch.js)
+dist/         ビルド出力 (esbuild)
+static/       Web UI の静的ファイル
+```
+
+### 設定ファイルの場所
+
+開発時もグローバルインストール時も、設定は同じパスに保存されます。
+
+| ファイル | 内容 |
+|---------|------|
+| `~/.config/cloud-code-switcher/state.json` | プロバイダー設定・モデル情報 |
+| `~/.config/cloud-code-switcher/processes.json` | `run` で起動したプロセスの管理 |
 
 ## ライセンス
 
