@@ -1,6 +1,6 @@
 {
-  "name": "cloud-code-switcher",
-  "version": "0.0.1",
+  "name": "@nogataka/cloud-code-switcher",
+  "version": "0.0.2",
   "description": "Switch Claude Code providers via CLI and Web UI",
   "main": "dist/cli.js",
   "bin": {
