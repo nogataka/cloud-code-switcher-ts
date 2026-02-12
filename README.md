@@ -2,6 +2,8 @@
 
 Claude Code のプロバイダーを CLI / Web UI から切り替えるツールです。
 
+![Cloud Code Switcher](docs/assets/screenshot.png)
+
 ## 対応プロバイダー
 
 | ID | プロバイダー | 認証 |
