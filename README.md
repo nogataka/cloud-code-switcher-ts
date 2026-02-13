@@ -18,7 +18,7 @@ Claude Code のプロバイダーを CLI / Web UI から切り替えるツール
 ## インストール
 
 ```bash
-npm install -g cloud-code-switcher
+npm install -g @nogataka/cloud-code-switcher
 ```
 
 ## 使い方
