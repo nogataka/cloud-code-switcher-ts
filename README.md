@@ -68,21 +68,22 @@ cc-switch ui
 | `CC_SWITCH_HOST` | リッスンアドレス | `127.0.0.1` |
 | `CC_SWITCH_PORT` | リッスンポート | `8787` |
 
-### プロバイダー環境でコマンドを実行
+### プロバイダー環境で claude を起動
 
 ```bash
-cc-switch run -- claude
+cc-switch run
 ```
 
-設定済みの環境変数を付与して任意のコマンドを実行します。
-引数を省略すると `claude` が実行されます。
+設定済みの環境変数を付与して `claude` を起動します。
+引数はそのまま `claude` に渡されます。
 
 ```bash
-# claude をそのまま起動
+# claude を起動
 cc-switch run
 
-# 別のコマンドを実行
-cc-switch run -- claude --model sonnet
+# オプション付きで起動
+cc-switch run --dangerously-skip-permissions
+cc-switch run --model sonnet
 ```
 
 ## 設定ファイル
@@ -137,9 +138,9 @@ npm run dev env
 # Web UI を起動
 npm run dev ui
 
-# プロバイダー環境でコマンドを実行
+# プロバイダー環境で claude を起動
 npm run dev run
-npm run dev run -- echo hello
+npm run dev run -- --dangerously-skip-permissions
 ```
 
 ### プロジェクト構成

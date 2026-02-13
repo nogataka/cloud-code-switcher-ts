@@ -68,24 +68,21 @@ program
 
 program
   .command("run")
-  .description("Run command with active provider env")
+  .description("Run claude with active provider env")
   .allowUnknownOption(true)
   .helpOption(false)
-  .argument("[args...]", "Command to run (after --)")
+  .argument("[args...]", "Arguments to pass to claude")
   .action((args: string[]) => {
     // Strip leading "--" if present
     if (args.length > 0 && args[0] === "--") {
       args = args.slice(1);
-    }
-    if (args.length === 0) {
-      args = ["claude"];
     }
 
     const state = ensureState();
     const envOverrides = buildEnvFromState(state);
     const env = { ...process.env, ...envOverrides };
 
-    const proc = spawn(args[0], args.slice(1), {
+    const proc = spawn("claude", args, {
       env,
       stdio: "inherit",
     });
@@ -93,7 +90,7 @@ program
     registerProcess(
       proc.pid!,
       process.cwd(),
-      args.join(" "),
+      `claude ${args.join(" ")}`.trim(),
       state.provider || ""
     );
 
